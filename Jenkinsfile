@@ -19,18 +19,15 @@ pipeline {
             }
         }
     
-      stage('Publish Docker Image'){
+      stage("Push image") {
             steps {
                 script {
-                    myapp = docker.build("4599/hellowhale:${env.BUILD_ID}")
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                            myapp.push("latest")
+                            myapp.push("${env.BUILD_ID}")
+                    }
                 }
             }
-         withCredentials([string(credentialsId: 'dockerpwd', variable: 'dockerPWD')]) {
-              sh "docker login -u intdoc89 -p ${dockerPWD}"
-         }
-        sh "docker push ${myapp}"
-        
-      }
         }
 
     
