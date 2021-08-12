@@ -1,6 +1,6 @@
 pipeline {
 
-  agent ('JenkinsSlave')
+  node ('JenkinsSlave')
 
   stages {
 
