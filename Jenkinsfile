@@ -7,7 +7,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git url:'https://github.com/snadimpally/java-groovy-docker.git', branch:'master'
+        git url:'https://github.com/snadimpally/hellowhale.git', branch:'master'
       }
     }
     
